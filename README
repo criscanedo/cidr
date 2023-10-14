@@ -1,0 +1,20 @@
+cidr
+====
+
+cidr is a small, primitive tool used to convert IPv4 CIDR notation to its
+representative address range.
+
+Install
+-------
+
+    $ git clone https://git.sr.ht/~hackexe/cidr
+    $ cd cidr
+    $ make
+    # make install
+
+Usage
+-----
+
+    $ cidr 10.0.0.0/24
+
+A complete list of examples can be seen in the cidr(1) man page.

@@ -1,0 +1,42 @@
+.Dd $Mdocdate$
+.Dt CIDR 1 
+.Os
+.Sh NAME
+.Nm cidr
+.Nd convert CIDR notation to address range
+.Sh SYNPOSIS
+.Nm cidr
+.Op Ar cidr ...
+.Sh DESCRIPTION
+.Nm
+converts IPv4 CIDR notation to its representative address range after applying
+its subnet mask. Multiple CIDRs can be converted at once. If no arguments are
+specified, standard input is used.
+.Sh EXAMPLES
+Convert CIDR from argument list:
+.Pp
+.Dl $ cidr 10.0.0.0/24
+.Pp
+Convert multiple CIDRs:
+.Pp
+.Dl $ cidr 10.0.0.0/24 192.168.0.10/24
+.Pp
+Convert from standard input:
+.Bd -literal -offset indent
+$ cidr
+10.0.0.0/24
+.Ed
+.Dl 
+.Pp
+Convert from piped standard input:
+.Pp
+.Dl $ echo 10.0.0.0/24 | cidr
+.Pp
+Convert from a file containing a list of CIDRs:
+.Pp
+.Dl $ cidr < cidrlist
+.Pp
+.Sh AUTHORS
+.An Cristian Canedo Aq Mt ccanedo@satorii.org
+.Sh CAVEATS
+Malformed and invalid CIDRs are quietly ignored.
