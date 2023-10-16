@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         for (; *argv; argv++)
             parse(*argv);
     } else {
-        char line[MAXLINE + 2];
+        char line[MAXLINE + 1];
         while (fgets(line, sizeof(line), stdin))
             parse(line);
     }
