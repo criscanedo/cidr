@@ -8,13 +8,13 @@
 #define IP4_LEN 15          /* xxx.xxx.xxx.xxx */
 #define MAXLINE IP4_LEN + 4 /* xxx.xxx.xxx.xxx/xx + \n */
 
-void iptostr(uint32_t ip, char *s)
+static void iptostr(uint32_t ip, char *s)
 {
     snprintf(s, IP4_LEN + 1, "%d.%d.%d.%d",
         ip >> 24, (ip >> 16) & 0xFF, (ip >> 8) & 0xFF, ip & 0xFF);
 }
 
-int iptoint(char *s, uint32_t *ip)
+static int iptoint(char *s, uint32_t *ip)
 {
     unsigned short a, b, c, d;
 
@@ -28,7 +28,7 @@ int iptoint(char *s, uint32_t *ip)
     return 0;
 }
 
-int torange(char *cidr, char *first, char *last)
+static int torange(char *cidr, char *first, char *last)
 {
     uint8_t bits;
     uint32_t start, end, mask;
@@ -45,7 +45,7 @@ int torange(char *cidr, char *first, char *last)
     return 0;
 }
 
-void parse(char *cidr)
+static void parse(char *cidr)
 {
     char first[IP4_LEN + 1] = { 0 };
     char last[IP4_LEN + 1] = { 0 };

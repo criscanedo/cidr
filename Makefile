@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -std=c99 -pedantic -Wall
+CFLAGS = -std=c99 -pedantic -Wall -Os
 
 PREFIX = /usr/local
 MANPREFIX = ${PREFIX}/share/man
@@ -10,7 +10,14 @@ MANPREFIX = ${PREFIX}/share/man
 all: cidr
 
 clean:
-	rm -f cidr
+	rm -f cidr cidr.tar.gz
+
+dist: clean
+	mkdir cidr
+	cp LICENSE Makefile README cidr.c cidr.1 cidr
+	tar -cf cidr.tar cidr
+	gzip cidr.tar
+	rm -rf cidr
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
@@ -22,3 +29,5 @@ install: all
 uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/cidr\
 		${DESTDIR}${MANPREFIX}/man1/cidr.1
+
+.PHONY: all clean dist install uninstall

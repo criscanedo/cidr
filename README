@@ -7,7 +7,17 @@ representative address range.
 Install
 -------
 
+git:
+
     $ git clone https://git.sr.ht/~hackexe/cidr
+    $ cd cidr
+    $ make
+    # make install
+
+tarball:
+
+    $ curl -O gopher://satorii.org/9/src/cidr.tar.gz
+    $ tar -xzvf cidr.tar.gz
     $ cd cidr
     $ make
     # make install
